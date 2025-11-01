@@ -1,46 +1,86 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wi-Fi para Clientes VIPs</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Wi-Fi VIP</title>
   <style>
-    body { font-family: Arial, sans-serif; text-align: center; background-color: #f5f5f5; padding-top: 80px; }
-    .container { background: white; max-width: 380px; margin: auto; padding: 28px; border-radius: 12px; box-shadow: 0 0 18px rgba(0,0,0,0.08); }
-    h1 { color: #333; margin: 0 0 6px; }
-    p { color: #666; margin: 6px 0 14px; }
-    input { width: 86%; padding: 10px; margin-top: 10px; border-radius: 8px; border: 1px solid #ccc; font-size: 15px; }
-    button { margin-top: 18px; padding: 10px 22px; font-size: 15px; border: none; border-radius: 8px; background-color: #2b6cb0; color: white; cursor: pointer; }
-    button:hover { background-color: #1a4f8a; }
-    footer { margin-top: 36px; color:#777; font-size:13px; }
-    .small { font-size:12px; color:#999; margin-top:8px; }
+    html,body{height:100%;margin:0}
+    body{
+      background:#05060a;
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-family:Segoe UI, Roboto, Arial, sans-serif;
+    }
+    .card{
+      width: 360px;
+      padding: 28px;
+      border-radius: 14px;
+      background: #14161b;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      text-align:center;
+    }
+    .icon{ font-size:36px; margin-bottom:8px; color:#00c6ff; }
+    h2{ margin:0 0 6px; font-size:20px; color:#f4f7fb; }
+    p.lead{ margin:0 0 14px; color:#c5cdd7; font-size:14px; }
+    input{
+      width:100%;
+      padding:10px 12px;
+      margin:8px 0;
+      border-radius:8px;
+      border:1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.03);
+      color:#fff;
+      box-sizing:border-box;
+    }
+    input::placeholder{ color:#9aa3ad; }
+    .btn{
+      width:100%;
+      padding:11px;
+      margin-top:10px;
+      border-radius:8px;
+      border:none;
+      background: linear-gradient(90deg,#00c6ff,#0072ff);
+      color:#04202b;
+      font-weight:600;
+      cursor:pointer;
+      transition: transform .12s ease;
+    }
+    .btn:active{ transform: scale(.99); }
+    .small{ font-size:12px; color:#8f9aa6; margin-top:10px; }
+    footer{ position:fixed; bottom:18px; left:0; right:0; text-align:center; color:#7f8a94; font-size:13px; }
+    @media(max-width:420px){ .card{ width:90%; padding:20px; } }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Wi-Fi para Clientes VIPs</h1>
-    <p>Preencha seus dados para acessar a rede exclusiva:</p>
-    <input type="text" id="nome" placeholder="Seu nome..." /><br />
-    <input type="tel" id="telefone" placeholder="Seu número de telefone..." /><br />
-    <div class="small">Usaremos só para fins da brincadeira. Não armazenamos dados.</div>
-    <button onclick="acessar()">Enviar</button>
+  <div class="card">
+    <div class="icon">📶</div>
+    <h2>Wi-Fi para Clientes VIPs</h2>
+    <p class="lead">Preencha seus dados para acessar a rede exclusiva:</p>
+
+    <!-- IMPORTANTE: aqui o form redireciona para trolagem.html -->
+    <form onsubmit="event.preventDefault(); goToTrolagem();">
+      <input id="nome" type="text" placeholder="Seu nome..." required />
+      <input id="tel" type="tel" placeholder="Seu número de telefone..." required />
+      <div class="small">Usaremos só para fins da brincadeira. Não armazenamos dados.</div>
+      <button class="btn" type="submit">Conectar</button>
+    </form>
   </div>
+
   <footer>Rede exclusiva para clientes especiais 😎</footer>
 
   <script>
-    function acessar() {
-      const nome = document.getElementById("nome").value.trim();
-      const tel = document.getElementById("telefone").value.trim();
+    function goToTrolagem(){
+      // validação simples (apenas para garantir preenchimento)
+      const n = document.getElementById('nome').value.trim();
+      const t = document.getElementById('tel').value.trim();
+      if(!n || !t){ alert('Por favor, preencha nome e telefone.'); return; }
 
-      if (nome === "" || tel === "") {
-        alert("Por favor, preencha todos os campos!");
-        return;
-      }
-
-      document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;background:#f5f5f5;font-family:Arial,sans-serif;"><div><h2>Conectando à rede VIP...</h2><p style="color:#666;text-align:center">Aguarde...</p></div></div>';
-      setTimeout(function() {
-        window.location.href = "trolagem.html";
-      }, 2000);
+      // pode colocar uma pequena animação/espera se quiser
+      // redireciona para a página da imagem (mesmo repositório)
+      window.location.href = 'trolagem.html';
     }
   </script>
 </body>
