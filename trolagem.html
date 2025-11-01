@@ -6,43 +6,96 @@
   <title>Wi-Fi VIP</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
+    /* Fundo e centralização */
     body {
-      background-color: #f8f8f8;
+      background-color: #0d1117;
+      color: #fff;
       height: 100vh;
+      margin: 0;
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 0;
       flex-direction: column;
+      font-family: 'Poppins', sans-serif;
     }
+
+    /* Cartão central */
     .card {
-      padding: 2rem;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      border-radius: 12px;
-      max-width: 400px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      padding: 2rem 2.5rem;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+      max-width: 380px;
       width: 100%;
-      text-align: center;
-      background-color: white;
+      animation: fadeIn 0.8s ease-in-out;
     }
+
+    /* Animação */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Título */
+    h2 {
+      font-weight: 600;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .wifi-icon {
+      font-size: 2rem;
+      color: #00c6ff;
+      margin-bottom: 10px;
+    }
+
+    /* Campos de texto */
+    input {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+    }
+    input::placeholder {
+      color: #aaa;
+    }
+
+    /* Botão */
+    .btn-custom {
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      border: none;
+      border-radius: 8px;
+      transition: 0.3s;
+      font-weight: 500;
+    }
+    .btn-custom:hover {
+      background: linear-gradient(90deg, #0072ff, #00c6ff);
+      transform: scale(1.03);
+    }
+
+    /* Rodapé */
     footer {
-      margin-top: 20px;
-      text-align: center;
-      font-size: 14px;
-      color: #555;
+      margin-top: 25px;
+      font-size: 0.9rem;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
   <div class="card">
-    <h2><strong>Wi-Fi para Clientes VIPs</strong></h2>
-    <p>Preencha seus dados para acessar a rede exclusiva:</p>
+    <div class="wifi-icon">📶</div>
+    <h2>Wi-Fi para Clientes VIPs</h2>
+    <p style="font-size: 0.95rem;">Preencha seus dados para acessar a rede exclusiva:</p>
     <form onsubmit="event.preventDefault(); window.location.href='imagem.html';">
-      <input type="text" class="form-control mb-2" placeholder="Seu nome..." required>
-      <input type="tel" class="form-control mb-2" placeholder="Seu número de telefone..." required>
-      <p style="font-size: 12px;">Usaremos só para fins da brincadeira. Não armazenamos dados.</p>
-      <button type="submit" class="btn btn-primary w-100">Enviar</button>
+      <input type="text" class="form-control mb-3" placeholder="Seu nome..." required>
+      <input type="tel" class="form-control mb-3" placeholder="Seu número de telefone..." required>
+      <p style="font-size: 12px; color: #999;">Usaremos só para fins da brincadeira. Não armazenamos dados.</p>
+      <button type="submit" class="btn btn-custom w-100 py-2">Conectar</button>
     </form>
   </div>
+
   <footer>Rede exclusiva para clientes especiais 😎</footer>
 </body>
 </html>
